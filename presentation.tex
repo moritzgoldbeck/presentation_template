@@ -1,0 +1,594 @@
+\documentclass{beamer} % [aspectratio=169]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%STANDARD PACKAGES
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+%FONT
+\usepackage[T1]{fontenc}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[sfdefault,light,medium,scaled=.85]{roboto}
+\definecolor{textcolor}{RGB}{34,34,34}
+\setbeamercolor{normal text}{fg=textcolor}
+%\usepackage{kerkis}
+%\usepackage{kmath}
+\usepackage{fontawesome} % icons
+
+%THEOREM BOXES
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem{finding}{\color{ifo-blue}Puzzle}
+{colback=white,colframe=lightgray!30,fonttitle=\bfseries}{th}
+
+%DIAGRAMS
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, automata}
+\tikzstyle{ipr}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{ipr1}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, draw=black]
+\tikzstyle{country}=[ellipse, minimum width= 3cm, minimum height=1.5cm, text centered, draw=black, fill=lightgray, auto]
+\tikzstyle{arrow}=[thick,->,>=stealth]
+\tikzstyle{arrow1}=[thin, draw=red]
+\tikzstyle{explain}=[ellipse, fill=red!30, draw=red]
+\tikzstyle{explain1}=[rectangle, rounded corners, fill=red!30, draw=red]
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,inner sep=2pt, fill = lightgray!30] (char) {#1};}} %icons
+
+%SLIDE STYLE
+\usetheme{Szeged}
+\usecolortheme{beaver}
+\defbeamertemplate*{headline}{miniframes theme no subsection}
+{%
+  %\begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+  %\end{beamercolorbox}
+  %\begin{beamercolorbox}{section in head/foot}			% Navigationsleiste mit Punkten
+  %  \vskip2pt\insertnavigation{\paperwidth}\vskip2pt	% Navigationsleiste mit Punkten
+  %\end{beamercolorbox}									% Navigationsleiste mit Punkten
+  %\begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+  %\end{beamercolorbox}
+}
+\setbeamertemplate{footline}[miniframes theme no subsection]
+\setbeamertemplate{navigation symbols}{}
+\definecolor{ifo-blue}{RGB}{13,64,128}
+\definecolor{ifo-blue2}{RGB}{100,149,237}
+\setbeamercolor{title}{fg=ifo-blue}
+\setbeamercolor{frametitle}{fg=ifo-blue}
+\setbeamercolor{structure}{fg=ifo-blue}
+\setbeamercolor{section in head/foot}{fg=ifo-blue, bg=lightgray!20}
+\setbeamercolor{title}{bg={lightgray!20}} % empty {} for transparent
+\setbeamercolor{button}{bg={lightgray!30},fg=ifo-blue}
+\setbeamertemplate{footline}{}
+
+%BACKUP SLIDES
+\newcommand{\backupbegin}{
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\setcounter{framenumber}{\value{finalframe}}
+}
+\usepackage{appendixnumberbeamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\textbf{The impact of cross-border M\&A on the innovative activity of European target firms}}
+
+\author{Moritz Goldbeck}
+
+\institute{INTernal Seminar \\ ifo Insitute, Munich}
+
+\date{\footnotesize February 12, 2020}
+
+\begin{document}
+%{
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth, height=\paperheight]{bg.png}}%
+%{
+%\setbeamercolor{background canvas}{bg=ifo-blue}
+	\frame[plain]{\titlepage}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% OUTLINE %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\frame{\frametitle{Outline} \tableofcontents}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% MOTIVATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation}
+
+\begin{frame}{\textbf{Structure of FDI is changing...}}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item \textbf{until recently:} almost all FDI originated in developed nations
+				\vspace{.2cm}
+				\item \textbf{now:} emerging economies (esp. China) engage more and more in FDI
+				\begin{itemize}
+				    \item[---] e.g. BRI, Made in China 2025
+				\end{itemize}
+				\vspace{.2cm}
+				\item big proportion of FDI are \textbf{cross-border mergers and acquisitions (M\&A)}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[height=.85\textheight]{fdi_home.PNG}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+	\includegraphics[width=\textwidth]{china_fdi}
+\end{frame}
+
+\begin{frame}{\textbf{Motivation}}
+	\begin{finding*}{}{}
+		\textbf{Evidence:} foreign multinationals highly productive and innovative \\
+		\textbf{However:} widespread scepticism against aquirers from emerging economies (especially China)
+	\end{finding*}
+	\pause
+	\begin{itemize}
+		\vspace{.2cm}
+		\item different \textbf{motives} of acquirers from emerging economies?
+		\begin{itemize}
+			\item[---] quick technology transfer instead of long-term collaboration
+			\item[---] loss of white-collar jobs in the medium term
+		\end{itemize}
+		\item different \textbf{effect} on target firm's innovation?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{This paper}}
+	\textbf{Is the impact of (cross-border) M\&A on innovation of European targets} \\
+	\textbf{different w.r.t. acquirer origin?}
+	\vspace{20pt}
+	\pause
+	\begin{itemize}
+		\item Yes, I find \textbf{significant heterogeneity} w.r.t. acquirer origin.
+		\vspace{.3cm}
+		\item My difference-in-differences analysis shows that patenting...
+		\begin{itemize}
+		    \item[---]declines after domestic M\&As
+		    \item[---]slightly declines (insig.) for all cross-border M\&As
+		    \item[---]does not change for M\&As from non-high income countries
+		    \item[---]increases (insig.) after M\&As from China
+		\end{itemize}
+		\vspace{.5cm}
+		\item closely related to Stiebale (2016); value added: heterogeneity analysis
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+	\vspace{1cm}
+	{\color{white}\LARGE \textbf{Data}}
+\end{frame}
+}
+
+
+\begin{frame}{\textbf{Data:} firm-level panel}
+\centering\includegraphics[width=.95\textwidth, trim={4cm 0 3cm 0}]{procedure.pdf}
+\end{frame}
+
+\begin{frame}{\textbf{Data:} variables}
+	\begin{itemize}
+		\item \textbf{innovation:} yearly patent application counts
+		\vspace{.4cm}
+		\item \textbf{treatment:} year of merger/acquisition
+		\vspace{.4cm}
+		\item \textbf{firm characteristics:}
+		\begin{itemize}
+			\item[---] number of employees
+			\item[---] revenue
+			\item[---] profit
+			\item[---] industry
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% IDENTIFICATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Identification}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+		\vspace{1cm}
+		{\color{white}\LARGE \textbf{Identification strategy}}
+	\end{frame}
+}
+
+\begin{frame}{\textbf{Identification strategy:} control group generation}
+\begin{itemize}
+	\item \textbf{coarsened exact matching:} pre-treatment match ($t-1$) on log firm characteristics
+	\vspace{.1cm}
+	\begin{itemize}
+		\item[---] patent applications
+		\item[---] revenue
+		\item[---] number of employees
+		\item[---] profit
+	\end{itemize}
+	\item[---] degree of coarsening: eight equidistant bins on log scale \hfill \hyperlink{cutpoints}{\beamergotobutton{Cutpoints}}
+	\item[---] exact match on industry and year
+	\vspace{.5cm}
+	\item \textbf{control weighting:} to account for $m$-to-$j$ matches in strata
+\end{itemize}
+\vspace{.3cm}
+\begin{equation*}
+\omega_{s}^{C} = \frac{N_{s}^{T}}{N_{s}^{C}} \bigg / \frac{N_{tot}^{T}}{N_{tot}^{C}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{\textbf{Identification strategy:} count data FE DiD}
+	\begin{itemize}
+		\item \textbf{Poisson model:} dependent variable is a count
+		\begin{equation*}
+		    y_{it} \sim \text{Po}(\lambda_{it}),\quad \lambda_{it} > 0
+		\end{equation*}
+		\begin{equation*}
+		    \mathbb{E}(y_{it})=\exp{\big(x_{it}^{\prime}\vec{\beta}\big)}=\lambda_{it}
+		\end{equation*}
+		\item \textbf{Difference-in-differences:} ATT specification
+		\begin{equation*}
+		    x_{it}^{\prime}\vec{\beta}=\beta_{0} + \beta_{1} post_{t} + \beta_{2} (MA_{i}\times post_{t}) + \delta_{t} + \delta_{i}
+		\end{equation*}
+		\item \textbf{Difference-in-differences:} dynamic ATT specification
+		\begin{equation*}
+		    x_{itS}^{\prime}\vec{\beta} = \beta_{0} + \sum_{t=-2}^{4}{\beta_{1t} t} + \sum_{t=-2}^{4}{\beta_{2t}(MA_{i}\times t)} + \delta_{S} + \delta_{i}
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{Heterogeneity analysis:} different (sub)samples}
+\includegraphics[height=.7\textheight]{venn_sample.pdf}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DESCRIPTIVES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Descriptives}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+	\vspace{1cm}
+	{\color{white}\LARGE \textbf{Descriptive statistics}}
+\end{frame}
+}
+
+\begin{frame}{\textbf{Descriptives:} acquirer origin in cross-border M\&A}
+\centering\includegraphics[width=\textwidth]{map_acquirers.pdf}
+\end{frame}
+
+\begin{frame}{\textbf{Descriptives:} target patenting levels by acquirer origin}
+\centering\includegraphics[width=.9\textwidth]{descriptives_avg_patents.pdf}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+		\vspace{1cm}
+		{\color{white}\LARGE \textbf{Results}}
+	\end{frame}
+}
+
+
+\begin{frame}{\textbf{Matching:} quality (here: non-HIC)}
+\centering\includegraphics[width=.75\textwidth]{qq-plot_non-hic_combined_strata.pdf}
+\end{frame}
+
+\begin{frame}{\textbf{Matching:} quantity}
+\begin{table}
+\centering
+\begin{tabular}{lccc}
+	\midrule
+	Sample & Treated & Matched & \% matched \\
+	\midrule
+	All   & 1,208   & 1,133   & 93.8 \\
+	Foreign & 645   & 604   & 93.6 \\
+	Non-HIC & 61    & 56    & 91.8 \\
+	China & 17    & 16     & 94.1 \\
+	\midrule
+\end{tabular}%
+\label{tab:matching_quantity}%
+\end{table}%
+\vspace{.4cm}
+\hfill \hyperlink{unmatched}{\beamergotobutton{Unmatched units}}
+\end{frame}
+
+\begin{frame}{\textbf{Event study:} target patenting by acquirer origin}
+\centering\includegraphics[width=\textwidth]{descriptives_eventstudy_patents.pdf}
+\end{frame}
+
+\begin{frame}{\textbf{Results:} average treatment effect on the treated (ATT)}
+	\begin{table}[t!]
+	\centering
+	\begin{tabular}{lrrrr}
+		\midrule
+		& \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} \\
+		patents & \multicolumn{1}{c}{All} & \multicolumn{1}{c}{Foreign} & \multicolumn{1}{c}{Non-HIC} & \multicolumn{1}{c}{China} \\
+		\midrule
+		$post$  & \multicolumn{1}{c}{	-0.0155} & \multicolumn{1}{c}{-0.0189} & \multicolumn{1}{c}{-0.0984***} & \multicolumn{1}{c}{-0.221***} \\
+		& \multicolumn{1}{c}{(0.0149)} & \multicolumn{1}{c}{(0.0146)} & \multicolumn{1}{c}{(0.0146)} & \multicolumn{1}{c}{(0.0363)} \\
+		$MA\times post$ & \multicolumn{1}{c}{-0.223**} & \multicolumn{1}{c}{ -0.153} & \multicolumn{1}{c}{0.164} & \multicolumn{1}{c}{0.401} \\
+		& \multicolumn{1}{c}{(0.0932)} & \multicolumn{1}{c}{ (0.109)} & \multicolumn{1}{c}{(0.306)} & \multicolumn{1}{c}{(0.280)} \\
+		\midrule
+		year FE & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
+		firm FE & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
+		constant & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
+		\midrule
+		\# Obs. & \multicolumn{1}{c}{166,772} & \multicolumn{1}{c}{136,835} & \multicolumn{1}{c}{27,376} & \multicolumn{1}{c}{ 4,599} \\
+		N     & \multicolumn{1}{c}{24,582} & \multicolumn{1}{c}{20,213} & \multicolumn{1}{c}{3,929} & \multicolumn{1}{c}{657} \\
+		N(treated) & \multicolumn{1}{c}{1,133} & \multicolumn{1}{c}{604} & \multicolumn{1}{c}{56} & \multicolumn{1}{c}{16} \\
+		\midrule
+		\multicolumn{5}{l}{\footnotesize{Note: Robust cluster standard errors in parentheses, clustered at firm level.}}       \\
+		\multicolumn{5}{l}{\footnotesize{Observations weighted by CEM weights. *** $p<0.01$, ** $p<0.05$, * $p<0.1$}}       \\
+	\end{tabular}%
+	\label{tab:did_att}%
+    \end{table}%
+    \hfill \hyperlink{robustness}{\beamergotobutton{Robustness}}
+\end{frame}
+
+\begin{frame}{\textbf{Results:} dynamic treatment effect on treated}
+	\centering\includegraphics[width=\textwidth]{countmodel_att_dynamic.pdf}\\
+	\hfill \hyperlink{domestic}{\beamergotobutton{Domestic}} \\
+	\hfill \hyperlink{dynamic}{\beamergotobutton{Table}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Challenges & Outlook %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Outlook}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+		\vspace{1cm}
+		{\color{white}\LARGE \textbf{Challenges \& outlook}}
+	\end{frame}
+}
+
+
+\begin{frame}{\textbf{Challenges}}
+	\begin{itemize}
+		\item[---] solve multicollinearity issue
+		\vspace{.4cm}
+		\item[---] increase observations
+		\vspace{.4cm}
+		\item[---] many zeros in patenting (for some firms)
+		\vspace{.4cm}
+		\item (much) \textbf{more data needed}...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{Outlook}}
+	\begin{itemize}
+		\item build a small \textbf{theoretical model} of FDI decision?
+		\vspace{.4cm}
+		\item look more detailed into \textbf{heterogeneity} (other countries/groups)?
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% THANK YOU %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+\setbeamercolor{background canvas}{bg=ifo-blue}
+\begin{frame}[plain]		
+	\vspace{1cm}
+	{\color{white}\huge \textbf{Thanks,}\\ \vspace{.4cm} \Large what are your questions?}
+		
+	%\vspace{2.5cm}
+		
+	%\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faHome}} \hspace{.1cm} {\footnotesize \color{white} \href{moritz.goldbeck.net}{moritz.goldbeck.net}}\\
+	%\hspace{7cm}\circled{{\color{ifo-blue}\fontsize{8}{9}\faEnvelope}} \hspace{.1cm} {\footnotesize \color{white} \href{mailto:goldbeck@ifo.de}{goldbeck@ifo.de}}\\
+	%\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faTwitter}} \hspace{.1cm} {\footnotesize \color{white} \href{https://twitter.com/MoritzGoldbeck?lang=de}{MoritzGoldbeck}}\\
+\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\backupbegin
+
+\begin{frame}{\textbf{My questions}}
+	\begin{itemize}
+	    \item Can \textbf{ownership patterns} (intermediate buyer) bias estimates?
+	    \item Is \textbf{matching on missing values} a problem (separate category in matching)?
+	    \item Is there \textbf{pre-trending} in point estimates?
+	    \item Is it strange that there is an \textbf{immediate effect} in patenting?
+	    \item Which entity likely \textbf{files for patent} post M\&A (assumed: same firm)?
+	    \item Why is \textbf{post dummy} often significant (multicollinearity /w year FE)?
+	    \item Differently sized \textbf{confidence intervals} in dynamic estimations?
+	    \item @EBDC: How much work to \textbf{increase sample size} (i.e. go back >10y)?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[label=cutpoints]{\textbf{Matching:} stratification cutpoints}
+	\begin{table}[width=\paperwidth]
+		\centering
+		{ \tiny
+		\begin{tabular}{ccccccccc}
+			\midrule
+			\multicolumn{1}{c}{Cutpoint} & \multicolumn{1}{c}{ln\_patents} & \multicolumn{1}{c}{patents} & \multicolumn{1}{c}{ln\_revenue} & \multicolumn{1}{c}{revenue} & \multicolumn{1}{c}{ln\_employees} & \multicolumn{1}{c}{employees} & \multicolumn{1}{c}{ln\_profit} & \multicolumn{1}{c}{profit} \\
+			\midrule
+			1     & 0.000 & 1.00  & -4.338 & 0.0   & 0.000 & 1     & -7.454 & 0.0 \\
+			2     & 0.983 & 2.67  & -0.896 & 0.4   & 1.801 & 6     & -3.854 & 0.0 \\
+			3     & 1.966 & 7.14  & 2.546 & 12.8  & 3.601 & 37    & -0.255 & 0.8 \\
+			4     & 2.949 & 19.08 & 5.988 & 398.4 & 5.402 & 222   & 3.344 & 28.3 \\
+			5     & 3.932 & 50.99 & 9.429 & 12,448.1 & 7.203 & 1,343  & 6.944 & 1,036.5 \\
+			6     & 4.915 & 136.26 & 12.871 & 388,915.8 & 9.003 & 8,131  & 10.543 & 37,910.0 \\
+			7     & 5.897 & 364.12 & 16.313 & 12,150,910.2 & 10.804 & 49,225 & 14.142 & 1,386,549.5 \\
+			8     & 6.880 & 973.00 & 19.755 & 379,631,327.9 & 12.605 & 298,000 & 17.742 & 50,712,742.6 \\
+			\midrule
+			\multicolumn{8}{l}{{Equidistant cutpoints in terms of logarithmic values. Implied normal form values indicated for information purpose.}}
+		\end{tabular}%
+		\label{tab:cutpoints}%
+		}
+	\end{table}%
+\end{frame}
+
+\begin{frame}[label=robustness]{\textbf{Robustness:} \#bins, post \& expenditure}
+    \begin{tiny}
+	\begin{table}
+	\centering
+	\begin{tabular}{lccccccc}
+		\midrule
+		& (1)   & (2)   & (3)   & (4)   & (5)   & (6)   & (7) \\
+		& domestic & \multicolumn{6}{c}{all} \\
+		\cmidrule{3-8}          &       & \multicolumn{4}{c}{\#bins}    &       &  \\
+		\cmidrule{3-6}          &       & 5     & 7     & 10    & 15    & post  & exp.$^{\dag}$ \\
+		\midrule
+		post  & -0.0101 & -0.0480*** & -0.0458*** & -0.0487*** & 0.0312* & 0.0427*** & 0.0507 \\
+		& (0.0172) & (0.0107) & (0.0124) & (0.0139) & (0.0186) & (0.0124) & (0.0413) \\
+		$MA\times post$ & -0.334** & -0.147* & -0.172** & -0.177* & -0.201* & -0.255*** & 0.129 \\
+		& (0.162) & (0.0870) & (0.0837) & (0.0993) & (0.108) & (0.0853) & (0.133) \\
+		\midrule
+		firm FE & Yes   & Yes   & Yes   & Yes   & Yes   & Yes   & Yes \\
+		time FE & Yes   & Yes   & Yes   & Yes   & Yes   & Yes   & Yes \\
+		constant & Yes   & Yes   & Yes   & Yes   & Yes   & Yes   & Yes \\
+		\midrule
+		\# Obs. & 127,611 & 206,761 & 176,430 & 142,813 & 111,667 & 166,772 & 7,872 \\
+		N     & 18,847 & 30,399 & 25,997 & 21,085 & 16,559 & 24,582 & 1,993 \\
+		N(treated) & 529   & 622   & 598   & 583   & 537   & 604   & 90 \\
+		\midrule
+		\multicolumn{8}{l}{\tiny{Note: Robust cluster standard errors in parentheses.}}  \\
+		\multicolumn{8}{l}{\tiny{Standard errors clustered at firm level.}}       \\
+		\multicolumn{8}{l}{\tiny{Base time equals matching time $t(-1)$.}}  \\
+		\multicolumn{8}{l}{\tiny{Observations weighted by CEM weights.}}  \\
+		\multicolumn{8}{l}{\tiny{$^{\dag}$Logarithmic ratio of R\&D expenditure to operating profit.}}  \\
+		\multicolumn{8}{l}{\tiny{*** $p<0.01$, ** $p<0.05$, * $p<0.1$}}  \\
+	\end{tabular}
+	\label{tab:att_robust}%
+    \end{table}%
+    \end{tiny}
+\end{frame}
+
+\begin{frame}[label=unmatched]{\textbf{Unmatched:} comparison to matched}
+	\begin{table}[b!]
+	\centering
+	\begin{tabular}{lccccc}
+		\midrule
+		Variable & \multicolumn{3}{c}{Mean} & \multicolumn{2}{c}{$t$-test} \\
+		& \multicolumn{1}{c}{unmatched} & \multicolumn{1}{c}{matched} & \multicolumn{1}{c}{diff} & \multicolumn{1}{c}{$t$} & \multicolumn{1}{c}{$p>|t|$} \\
+		\midrule
+		patents & \multicolumn{1}{c}{32.60} & \multicolumn{1}{c}{8.50} & \multicolumn{1}{c}{24.10} & \multicolumn{1}{c}{n.a.$^*$} & \multicolumn{1}{c}{n.a.$^*$} \\
+		ln\_patents & \multicolumn{1}{c}{2.155} & \multicolumn{1}{c}{1.843} & \multicolumn{1}{c}{0.312} & \multicolumn{1}{c}{n.a.$^*$} & \multicolumn{1}{c}{n.a.$^*$} \\
+		\midrule
+		revenue & \multicolumn{1}{c}{1,812,942} & \multicolumn{1}{c}{106,951} & \multicolumn{1}{c}{1,705,991} & \multicolumn{1}{c}{n.a.$^*$} & \multicolumn{1}{c}{n.a.$^*$} \\
+		ln\_revenue & \multicolumn{1}{c}{13.394} & \multicolumn{1}{c}{10.687} & \multicolumn{1}{c}{2.707} & \multicolumn{1}{c}{2.5621} & \multicolumn{1}{c}{0.0715} \\
+		\midrule
+		employees & \multicolumn{1}{c}{1,089} & \multicolumn{1}{c}{342} & \multicolumn{1}{c}{747} & \multicolumn{1}{c}{n.a.$^*$} & \multicolumn{1}{c}{n.a.$^*$} \\
+		ln\_emoloyees & \multicolumn{1}{c}{6.479} & \multicolumn{1}{c}{4.936} & \multicolumn{1}{c}{1.544} & \multicolumn{1}{c}{1.7631} & \multicolumn{1}{c}{0.1995} \\
+		\midrule
+		profit & \multicolumn{1}{c}{78,121} & \multicolumn{1}{c}{9,594} & \multicolumn{1}{c}{68,527} & \multicolumn{1}{c}{n.a.$^*$} & \multicolumn{1}{c}{n.a.$^*$} \\
+		ln\_profit & \multicolumn{1}{c}{8.591} & \multicolumn{1}{c}{7.382} & \multicolumn{1}{c}{1.208} & \multicolumn{1}{c}{0.4274} & \multicolumn{1}{c}{0.6965} \\
+		\midrule
+		\multicolumn{6}{l}{\footnotesize{Note: Two-sided $t$-test accounts for unequal variances.}} \\
+		\multicolumn{6}{l}{\footnotesize{$^*$$t$-test not applicable due to non-normally distributed variable.}}
+	\end{tabular}%
+	\label{tab:des_unmatched_non-hic}%
+    \end{table}%
+\end{frame}
+
+\begin{frame}[plain, label=dynamic]
+	\begin{table}[p!]
+		\centering
+		{ \tiny
+		\begin{tabular}{lcccc}
+			\midrule
+			& (1)   & (2)   & (3)   & (4) \\
+			patents & All   & Foreign & Non-HIC & China \\
+			\midrule
+			$t(-2)$ & -0.426*** & -0.432*** & -0.444*** & -0.415** \\
+			& (0.0966) & (0.105) & (0.162) & (0.184) \\
+			$t(0)$  & 0.368*** & 0.377*** & 0.487*** & 0.523*** \\
+			& (0.0964) & (0.104) & (0.161) & (0.181) \\
+			$t(1)$  & 0.815*** & 0.854*** & 1.159*** & 0.976*** \\
+			& (0.193) & (0.209) & (0.323) & (0.358) \\
+			$t(2)$  & 1.220*** & 1.272*** & 1.665*** & 1.575*** \\
+			& (0.289) & (0.313) & (0.484) & (0.538) \\
+			$t(3)$  & 1.637*** & 1.707*** & 2.343*** & 2.286*** \\
+			& (0.385) & (0.417) & (0.645) & (0.716) \\
+			$t(4)$ & 2.032*** & 2.085*** & 2.824*** & 2.849*** \\
+			& (0.482) & (0.521) & (0.807) & (0.897) \\
+			\midrule
+			$MA\times t(-2)$ & 0.122 & 0.0942 & -0.371* & -0.220 \\
+			& (0.0768) & (0.0896) & (0.199) & (0.284) \\
+			$MA\times t(0)$ & 0.0339 & 0.0648 & 0.184 & 0.360*** \\
+			& (0.0876) & (0.0593) & (0.170) & (0.126) \\
+			$MA\times t(1)$ & -0.105 & -0.0848 & -0.112 & 0.209** \\
+			& (0.0711) & (0.0643) & (0.188) & (0.0902) \\
+			$MA\times t(2)$ & -0.186** & -0.137 & 0.0502 & 0.430** \\
+			& (0.0924) & (0.115) & (0.372) & (0.194) \\
+			$MA\times t(3)$ & -0.233** & -0.121 & 0.219 & 0.556*** \\
+			& (0.113) & (0.139) & (0.367) & (0.171) \\
+			$MA\times t(4)$ & -0.313*** & -0.213* & 0.0474 & 0.357*** \\
+			& (0.106) & (0.110) & (0.254) & (0.132) \\
+			\midrule
+			year FE & Yes   & Yes   & Yes   & Yes \\
+			firm FE & Yes   & Yes   & Yes   & Yes \\
+			constant & Yes   & Yes   & Yes   & Yes \\
+			\midrule
+			\# Obs. & 166,772 & 136,835 & 27,376 & 4,599 \\
+			N     & 24,582 & 20,213 & 3,929 & 657 \\
+			N(treated) & 1,133 & 604   & 56    & 16 \\
+			\midrule
+		\end{tabular}%
+		\label{tab:did_dynamic}%
+		}
+	\end{table}%
+\end{frame}
+
+\begin{frame}[label=domestic]{\textbf{Results:} ATT domestic sample}
+		\centering\includegraphics[width=\textwidth]{countmodel_domestic_att_dynamic.pdf}
+\end{frame}
+
+\backupend
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
