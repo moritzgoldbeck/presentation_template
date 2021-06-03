@@ -1,0 +1,245 @@
+\documentclass{beamer} % [aspectratio=169]
+
+\input{preamble.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\textbf{This is the PaperTitle}}
+\subtitle{This is a SubTitle}
+
+\author{\\
+		Your Name{\footnotesize$^{1,2}$}\quad
+		Co-author Name{\footnotesize$^{2,3}$}}
+
+\institute{$^1$Affiliation\quad
+		   $^2$Affiliation\quad
+		   $^3$Affiliation}
+
+\date{\footnotesize \today}
+
+\begin{document}
+%{
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth, height=\paperheight]{bg.png}}%
+%{
+%\setbeamercolor{background canvas}{bg=ifo-blue}
+	\frame[plain]{\titlepage}
+%}
+\addtocounter{framenumber}{-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% OUTLINE %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\frame{\frametitle{\textbf{Outline}} \tableofcontents}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% MOTIVATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+    \textbf{\textcolor{ifo-blue}{This could be your research question.}}
+    \vspace{.4cm}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item use \emph{typography} or \textcolor{ifo-blue}{color} to emphasize
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data}
+
+% Chapter Devider Slide
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+    	\vspace{1cm}
+    	{\color{white}\LARGE \textbf{Data}}
+    \end{frame}
+    \addtocounter{framenumber}{-1}
+}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item ...
+	\end{itemize}
+	\vspace{.4cm}
+	\begin{finding*}
+	{\hspace{-.4cm}\textcolor{ifo-blue}{\textbf{This is a box.}}}{
+	    \begin{itemize}
+	        \item[---] bulletpoint
+	        \item[---] bulletpoint
+	    \end{itemize}
+	}
+	\end{finding*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% IDENTIFICATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Identification}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+		\vspace{1cm}
+		{\color{white}\LARGE \textbf{Identification strategy}}
+	\end{frame}
+	\addtocounter{framenumber}{-1}
+}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+    \begin{centering}
+        {$y_{it} = \beta_{0} + \beta_{1} (post_{t}\times treat_{i}) + \pmb{X}\beta+ \alpha_{i} + \delta_{t} + \epsilon_{it}$}\\
+    \end{centering}
+    \vspace{.5cm}
+    \begin{footnotesize}
+        \hspace{2cm}\begin{tabular}{ r l }
+            $y_{it}$ & outcome \\ 
+            $post_{t}$ & post-treatment indicator\\
+            $\pmb{X}$ & covariate vector\\
+            $\alpha_{i}$ & individual fixed effects\\
+            $\delta_{t}$ & time fixed effects
+        \end{tabular}
+    \end{footnotesize}
+    \vspace{.5cm}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item ...
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DESCRIPTIVES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Descriptives}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+    	\vspace{1cm}
+    	{\color{white}\LARGE \textbf{Descriptive statistics}}
+    \end{frame}
+    \addtocounter{framenumber}{-1}
+}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item ...
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+		\vspace{1cm}
+		{\color{white}\LARGE \textbf{Results}}
+	\end{frame}
+	\addtocounter{framenumber}{-1}
+}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item ...
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Challenges & Outlook %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Outlook}
+{
+	\setbeamercolor{background canvas}{bg=ifo-blue}
+	\begin{frame}[plain]		
+		\vspace{1cm}
+		{\color{white}\LARGE \textbf{Challenges \& outlook}}
+	\end{frame}
+	\addtocounter{framenumber}{-1}
+}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item ...
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% THANK YOU %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+    \setbeamercolor{background canvas}{bg=ifo-blue}
+    \begin{frame}[plain]
+    	\vspace{1.5cm}
+    	{\color{white}\huge \textbf{Thanks,}\\ \vspace{.4cm} \Large what are your questions?}
+    		
+    	\vspace{2.5cm}
+    	
+    	\hspace{7cm}\circled{{\color{ifo-blue}\fontsize{8}{9}\faEnvelope}} \hspace{.1cm} {\footnotesize \color{white} \href{mailto:yourmail@domain.com}{yourmail@domain.com}}\\ % für 16:9 10cm
+    	\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faTwitter}} \hspace{.1cm} {\footnotesize \color{white} \href{#}{YourHandle}}\\ % für 16:9 10cm
+    	\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faHome}} \hspace{.1cm} {\footnotesize \color{white} \href{#}{yourwebsite.com}}\\ % für 16:9 10cm
+    \end{frame}
+    \addtocounter{framenumber}{-1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\backupbegin
+\renewcommand{\theframenumber}{\Roman{framenumber}}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+	\begin{itemize}
+	    \item bulletpoint
+    	\begin{itemize}
+    	    \item[---] subbulletpoint
+    	    \item[---] ...
+    	\end{itemize}
+    	\item ...
+	\end{itemize}
+\end{frame}
+
+\backupend
+
+\end{document}

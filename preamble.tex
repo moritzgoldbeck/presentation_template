@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%STANDARD PACKAGES
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+%FONT
+\usepackage[T1]{fontenc}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[sfdefault,light,medium,scaled=.85]{roboto}
+\definecolor{textcolor}{RGB}{34,34,34}
+\setbeamercolor{normal text}{fg=textcolor}
+\usepackage{fontawesome} % icons
+
+%THEOREM BOXES
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem{finding}{}{colback=white,colframe=lightgray!30, sharp corners, separator sign none, no counter}{th}
+%\newtcbtheorem{finding}{\color{ifo-blue}Puzzle}{colback=white,colframe=lightgray!30,fonttitle=\bfseries,sharp corners}{th}
+
+%DIAGRAMS
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, automata}
+\tikzstyle{ipr}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{ipr1}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, draw=black]
+\tikzstyle{country}=[ellipse, minimum width= 3cm, minimum height=1.5cm, text centered, draw=black, fill=lightgray, auto]
+\tikzstyle{arrow}=[thick,->,>=stealth]
+\tikzstyle{arrow1}=[thin, draw=red]
+\tikzstyle{explain}=[ellipse, fill=red!30, draw=red]
+\tikzstyle{explain1}=[rectangle, rounded corners, fill=red!30, draw=red]
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,inner sep=2pt, fill = lightgray!30] (char) {#1};}} %icons
+
+%SLIDE STYLE
+\usetheme{Szeged}
+\usecolortheme{beaver}
+\defbeamertemplate*{headline}{miniframes theme no subsection}{}
+\setbeamertemplate{footline}
+{
+    \leavevmode
+    \hbox{
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.7ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{page number in head/foot}
+        \usebeamerfont{author in head/foot}\theframenumber
+        \end{beamercolorbox}
+    }
+}
+\setbeamertemplate{navigation symbols}{}
+\definecolor{ifo-blue}{RGB}{13,64,128} % main color
+\setbeamercolor{title}{fg=ifo-blue}
+\setbeamercolor{frametitle}{fg=ifo-blue}
+\setbeamercolor{structure}{fg=ifo-blue}
+\setbeamercolor{section in head/foot}{fg=ifo-blue, bg=lightgray!20}
+\setbeamercolor{title}{bg={lightgray!20}} % {} = transparent
+\setbeamercolor{button}{bg={lightgray!30},fg=ifo-blue}
+
+%BACKUP SLIDES
+\newcommand{\backupbegin}{
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\setcounter{framenumber}{\value{finalframe}}
+}
+\usepackage{appendixnumberbeamer}
