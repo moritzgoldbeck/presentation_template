@@ -9,22 +9,18 @@
 \subtitle{This is a SubTitle}
 
 \author{\\
-		Your Name{\footnotesize$^{1,2}$}\quad
-		Co-author Name{\footnotesize$^{2,3}$}}
+		\small{First Author}{\scriptsize$^{1,2}$}\quad
+		\small{Second Author}{\scriptsize$^{2,3}$}}
 
-\institute{$^1$Affiliation\quad
-		   $^2$Affiliation\quad
-		   $^3$Affiliation}
+\institute{{\tiny$^{1}$}Affiliation 1\quad
+		   {\tiny$^{2}$}Affiliation 2\quad
+		   {\tiny$^{3}$}Affiliation 3}
 
 \date{\footnotesize \today}
 
 \begin{document}
-%{
-%\usebackgroundtemplate{\includegraphics[width=\paperwidth, height=\paperheight]{bg.png}}%
-%{
-%\setbeamercolor{background canvas}{bg=ifo-blue}
-	\frame[plain]{\titlepage}
-%}
+
+\frame[plain]{\titlepage}
 \addtocounter{framenumber}{-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,8 +37,6 @@
 
 % Sample Slide:
 \begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
-    \textbf{\textcolor{ifo-blue}{This could be your research question.}}
-    \vspace{.4cm}
 	\begin{itemize}
 	    \item bulletpoint
     	\begin{itemize}
@@ -97,7 +91,7 @@
 	\setbeamercolor{background canvas}{bg=ifo-blue}
 	\begin{frame}[plain]		
 		\vspace{1cm}
-		{\color{white}\LARGE \textbf{Identification strategy}}
+		{\color{white}\LARGE \textbf{Empirical strategy}}
 	\end{frame}
 	\addtocounter{framenumber}{-1}
 }
@@ -117,15 +111,6 @@
             $\delta_{t}$ & time fixed effects
         \end{tabular}
     \end{footnotesize}
-    \vspace{.5cm}
-	\begin{itemize}
-	    \item bulletpoint
-    	\begin{itemize}
-    	    \item[---] subbulletpoint
-    	    \item[---] ...
-    	\end{itemize}
-    	\item ...
-	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,8 +126,11 @@
     \addtocounter{framenumber}{-1}
 }
 
+% Image frame
+\imageframe{figures/IMG_0921.jpg}
+
 % Sample Slide:
-\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+\begin{frame}[label=descr]{\textbf{SlideTitle:} SlideSubTitle}
 	\begin{itemize}
 	    \item bulletpoint
     	\begin{itemize}
@@ -151,7 +139,7 @@
     	\end{itemize}
     	\item ...
 	\end{itemize}
-	\hspace{\fill}\hyperlink{appendix}{\beamerbutton{More info}}
+	\hspace{\fill}\hyperlink{appendix}{\beamergotobutton{More info}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,6 +165,20 @@
     	\end{itemize}
     	\item ...
 	\end{itemize}
+\end{frame}
+
+% Sample Slide:
+\begin{frame}{\textbf{SlideTitle:} SlideSubTitle}
+    \centering
+	\begin{threeparttable}[hb]
+    \centering
+    \resizebox{.7\textwidth}{!}{
+        \input{tables/table}
+    }
+    \begin{tablenotes}[flushleft]
+            \item\tiny\textit{Notes:} Cluster standard errors in parenthesis. *** p < 0.01, ** p < 0.05, * p < 0.1.
+    \end{tablenotes}
+\end{threeparttable}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -209,14 +211,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
     \setbeamercolor{background canvas}{bg=ifo-blue}
-    \begin{frame}[plain]
+    \begin{frame}[plain]		
     	\vspace{1.5cm}
-    	{\color{white}\huge \textbf{Thanks,}\\ \vspace{.4cm} \Large what are your questions?}
+    	{\color{white}\LARGE \textbf{Thanks,}\\ \vspace{.2cm} \large what are your questions?}
     		
     	\vspace{2.5cm}
     	
-    	\hspace{7cm}\circled{{\color{ifo-blue}\fontsize{8}{9}\faEnvelope}} \hspace{.1cm} {\footnotesize \color{white} \href{mailto:yourmail@domain.com}{yourmail@domain.com}}\\ % für 16:9 10cm
-    	\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faTwitter}} \hspace{.1cm} {\footnotesize \color{white} \href{#}{YourHandle}}\\ % für 16:9 10cm
+    	\hspace{7cm}\circled{{\color{ifo-blue}\fontsize{8}{9}\faEnvelope}} \hspace{.1cm} {\footnotesize \color{white} \href{mailto:#}{name@institution.com}}\\ % für 16:9 10cm
+    	\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faTwitter}} \hspace{.1cm} {\footnotesize \color{white} \href{#}{TwitterHandle}}\\ % für 16:9 10cm
     	\hspace{7cm}\circled{{\color{ifo-blue}\footnotesize\faHome}} \hspace{.1cm} {\footnotesize \color{white} \href{#}{yourwebsite.com}}\\ % für 16:9 10cm
     \end{frame}
     \addtocounter{framenumber}{-1}
@@ -239,6 +241,7 @@
     	\end{itemize}
     	\item ...
 	\end{itemize}
+	\hspace{\fill}\hyperlink{descr}{\beamerreturnbutton{Back}}
 \end{frame}
 
 \backupend

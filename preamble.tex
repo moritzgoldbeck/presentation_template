@@ -14,6 +14,7 @@
 \usepackage{epstopdf}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage{threeparttable}
 
 %FONT
 \usepackage[T1]{fontenc}
@@ -22,6 +23,61 @@
 \definecolor{textcolor}{RGB}{34,34,34}
 \setbeamercolor{normal text}{fg=textcolor}
 \usepackage{fontawesome} % icons
+
+%GENERAL FRAME STYLE
+\usetheme{Szeged}
+\usecolortheme{beaver}
+\defbeamertemplate*{headline}{miniframes theme no subsection}{}
+\setbeamertemplate{footline}
+{
+    \leavevmode
+    \hbox{
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.7ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{page number in head/foot}
+        \usebeamerfont{author in head/foot}\theframenumber
+        \end{beamercolorbox}
+    }
+}
+\setbeamertemplate{navigation symbols}{}
+\definecolor{ifo-blue}{RGB}{13,64,128}
+\definecolor{ifo-blue2}{RGB}{100,149,237}
+\setbeamercolor{title}{fg=ifo-blue}
+\setbeamercolor{frametitle}{fg=ifo-blue}
+\setbeamercolor{structure}{fg=ifo-blue}
+\setbeamercolor{section in head/foot}{fg=ifo-blue, bg=lightgray!20}
+\setbeamercolor{title}{bg={lightgray!20}} % {} = transparent
+\setbeamercolor{button}{bg={lightgray!30},fg=ifo-blue}
+
+%% TITLE FRAME
+\setbeamertemplate{title page}
+{
+        \vspace{15mm}
+        {\usebeamerfont{title}\usebeamercolor[ifo-blue]{title}\Large\inserttitle}\\
+        {\usebeamerfont{subtitle}\usebeamercolor[ifo-blue]{subtitle}\large\insertsubtitle}\\ \vspace{7mm}
+        {\insertauthor}\\
+        {\textcolor{gray}{\scriptsize\insertinstitute}}\\ \vspace{4mm}
+        {\textcolor{gray}{\insertdate}}\\
+}
+
+%BACKUP SLIDES
+\newcommand{\backupbegin}{
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\setcounter{framenumber}{\value{finalframe}}
+}
+\usepackage{appendixnumberbeamer}
+
+% IMAGE FRAME
+\newcommand{\imageframe}[1]{%
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture, overlay]
+            \node[at = (current page.center), xshift = 0cm] (cover) {%
+                \includegraphics[keepaspectratio, width=\paperwidth, height=\paperheight]{#1}
+            };
+        \end{tikzpicture}
+    \end{frame}%
+}
 
 %THEOREM BOXES
 \usepackage{tcolorbox}
@@ -43,34 +99,17 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,inner sep=2pt, fill = lightgray!30] (char) {#1};}} %icons
 
-%SLIDE STYLE
-\usetheme{Szeged}
-\usecolortheme{beaver}
-\defbeamertemplate*{headline}{miniframes theme no subsection}{}
-\setbeamertemplate{footline}
-{
-    \leavevmode
-    \hbox{
-        \begin{beamercolorbox}[wd=\paperwidth,ht=2.7ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{page number in head/foot}
-        \usebeamerfont{author in head/foot}\theframenumber
-        \end{beamercolorbox}
-    }
+% TABLE HIGHLIGHTING
+\usepackage[beamer,customcolors]{hf-tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{fit,shapes.misc}
+\newcommand\marktopleft[1]{%
+    \tikz[overlay,remember picture]
+        \node (marker-#1-a) at (0,1.5ex) {};%
 }
-\setbeamertemplate{navigation symbols}{}
-\definecolor{ifo-blue}{RGB}{13,64,128} % main color
-\setbeamercolor{title}{fg=ifo-blue}
-\setbeamercolor{frametitle}{fg=ifo-blue}
-\setbeamercolor{structure}{fg=ifo-blue}
-\setbeamercolor{section in head/foot}{fg=ifo-blue, bg=lightgray!20}
-\setbeamercolor{title}{bg={lightgray!20}} % {} = transparent
-\setbeamercolor{button}{bg={lightgray!30},fg=ifo-blue}
-
-%BACKUP SLIDES
-\newcommand{\backupbegin}{
-	\newcounter{finalframe}
-	\setcounter{finalframe}{\value{framenumber}}
+\newcommand\markbottomright[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0,0) {};%
+    \tikz[darkred, ultra thick, overlay, remember picture, inner sep=4pt]
+        \node[draw, rectangle, fit=(marker-#1-a.center) (marker-#1-b.center)] {};%
 }
-\newcommand{\backupend}{
-	\setcounter{framenumber}{\value{finalframe}}
-}
-\usepackage{appendixnumberbeamer}
